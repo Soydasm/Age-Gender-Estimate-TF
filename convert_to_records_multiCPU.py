@@ -117,7 +117,7 @@ def convert_to(data_set, name, i, base_path, dataset_name):
                 'age': _int64_feature(int(ages[index])),
                 'gender': _int64_feature(int(genders[index])),
                 'image_raw': _bytes_feature(image_raw),
-                'file_name': _bytes_feature(str(file_name[index][0]))}))
+                'file_name': _bytes_feature(bytes(str(file_name[index][0]), 'utf8'))}))
             writer.write(example.SerializeToString())
             total = total + 1
     print("There are ", error, " missing pictures")
